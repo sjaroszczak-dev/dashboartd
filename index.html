@@ -216,6 +216,12 @@
             margin-right: 8px;
         }
 
+        .size-s input { accent-color: #3498db; }
+        .size-m input { accent-color: #2ecc71; }
+        .size-l input { accent-color: #e74c3c; }
+        .size-s { color: #3498db; }
+        .size-m { color: #2ecc71; }
+        .size-l { color: #e74c3c; }
         .dot-s { background-color: #3498db; }
         .dot-m { background-color: #2ecc71; }
         .dot-l { background-color: #e74c3c; }
@@ -370,15 +376,15 @@
                 <div class="control-group">
                     <h3>📊 Filtry</h3>
                     <div class="checkbox-group">
-                        <label class="checkbox-label">
+                        <label class="checkbox-label size-s">
                             <input type="checkbox" id="filterS" checked onchange="updateChart()">
                             Size S
                         </label>
-                        <label class="checkbox-label">
+                        <label class="checkbox-label size-m">
                             <input type="checkbox" id="filterM" checked onchange="updateChart()">
                             Size M
                         </label>
-                        <label class="checkbox-label">
+                        <label class="checkbox-label size-l">
                             <input type="checkbox" id="filterL" checked onchange="updateChart()">
                             Size L
                         </label>
