@@ -372,15 +372,15 @@
                     <div class="checkbox-group">
                         <label class="checkbox-label">
                             <input type="checkbox" id="filterS" checked onchange="updateChart()">
-                            Size S
+                            <span style="color:#3498db;font-weight:600">Size S</span>
                         </label>
                         <label class="checkbox-label">
                             <input type="checkbox" id="filterM" checked onchange="updateChart()">
-                            Size M
+                            <span style="color:#2ecc71;font-weight:600">Size M</span>
                         </label>
                         <label class="checkbox-label">
                             <input type="checkbox" id="filterL" checked onchange="updateChart()">
-                            Size L
+                            <span style="color:#e74c3c;font-weight:600">Size L</span>
                         </label>
                     </div>
                 </div>
@@ -551,13 +551,11 @@
                         actual: d,
                         isOutlier: isOutlier[idx]
                     })),
-                    backgroundColor: sizeData.map((d, idx) => 
-                        isOutlier[idx] ? '#f39c12' : colorMap[size]
-                    ),
+                    backgroundColor: colorMap[size],
                     borderColor: sizeData.map((d, idx) => 
                         isOutlier[idx] ? '#f39c12' : colorMap[size]
                     ),
-                    borderWidth: sizeData.map((d, idx) => isOutlier[idx] ? 2 : 1),
+                    borderWidth: sizeData.map((d, idx) => isOutlier[idx] ? 3 : 1),
                     pointRadius: sizeData.map((d, idx) => isOutlier[idx] ? 7 : 5),
                     pointHoverRadius: 8,
                     pointStyle: 'circle',
@@ -578,7 +576,18 @@
                     maintainAspectRatio: true,
                     plugins: {
                         legend: {
-                            labels: { color: '#fff', font: { size: 12 } },
+                            labels: {
+                                color: '#fff',
+                                font: { size: 12 },
+                                generateLabels: (chart) => chart.data.datasets.map((ds, i) => ({
+                                    text: ds.label,
+                                    fillStyle: ds.backgroundColor,
+                                    strokeStyle: ds.backgroundColor,
+                                    fontColor: '#fff',
+                                    hidden: !chart.isDatasetVisible(i),
+                                    datasetIndex: i
+                                }))
+                            },
                             display: true
                         },
                         tooltip: {
